@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { api } from '../services/api';
-// The 'as' was missing in '* as'
 import * as authService from '../services/authService'; 
 
 const AuthContext = createContext();
@@ -21,7 +20,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const data = await authService.login(email, password);
     setUser(data.user);
-    // We store the user data in local storage to keep them logged in
     localStorage.setItem('user', JSON.stringify(data.user));
     return data;
   };
@@ -40,7 +38,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ user, loading, login, logout, register }}>
       {!loading && children}
-    </AuthProvider> // <-- This was misspelled as 'AuthArovider'
+    </AuthContext.Provider>
   );
 };
 
