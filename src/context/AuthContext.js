@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { api } from '../services/api';
-import *s authService from '../services/authService';
+// The 'as' was missing in '* as'
+import * as authService from '../services/authService'; 
 
 const AuthContext = createContext();
 
@@ -31,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     delete api.defaults.headers.common['Authorization'];
   };
-
+  
   const register = async (username, email, password) => {
     return await authService.register(username, email, password);
   };
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ user, loading, login, logout, register }}>
       {!loading && children}
-    </AuthContext.Provider>
+    </AuthProvider> // <-- This was misspelled as 'AuthArovider'
   );
 };
 
