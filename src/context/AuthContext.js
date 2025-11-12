@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { api } from '../services/api';
-import * as authService from '../services/authService';
+import *s authService from '../services/authService';
 
 const AuthContext = createContext();
 
@@ -10,11 +10,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for user session on app load
-    const token = localStorage.getItem('token');
     const userData = localStorage.getItem('user');
-    if (token && userData) {
+    if (userData) {
       setUser(JSON.parse(userData));
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
     setLoading(false);
   }, []);
@@ -22,9 +20,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const data = await authService.login(email, password);
     setUser(data.user);
-    // Note: In a real app, the token would be returned from the /login endpoint
-    // For this Flask-Login demo, the session cookie is handled by the browser.
-    // We'll store user data in localStorage for simplicity.
+    // We store the user data in local storage to keep them logged in
     localStorage.setItem('user', JSON.stringify(data.user));
     return data;
   };
@@ -33,10 +29,9 @@ export const AuthProvider = ({ children }) => {
     await authService.logout();
     setUser(null);
     localStorage.removeItem('user');
-    localStorage.removeItem('token'); // If we were using tokens
     delete api.defaults.headers.common['Authorization'];
   };
-  
+
   const register = async (username, email, password) => {
     return await authService.register(username, email, password);
   };
