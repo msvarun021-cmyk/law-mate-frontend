@@ -1,4 +1,5 @@
 // This file matches the screenshot: `Screenshot 2025-11-06 094706.png`
+import FIROutput from '../../components/FIROutput';
 import React, { useState } from 'react';
 import { draftFIR as apiDraftFIR } from '../../services/policeService';
 import LoadingSpinner from '../../components/LoadingSpinner';

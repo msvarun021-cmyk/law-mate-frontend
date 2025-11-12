@@ -1,4 +1,5 @@
 // This file exactly matches the screenshot: `Screenshot 2025-11-06 094648.png`
+import NewsCard from '../../components/NewsCard';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { getPoliceDashboard } from '../../services/policeService';
