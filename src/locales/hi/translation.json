@@ -1,0 +1,8 @@
+const translations = {
+  "Dashboard": "डैशबोर्ड",
+  "Draft FIR": "प्राथमिकी का मसौदा",
+  "Search Sections": "धाराएं खोजें",
+  "Welcome back, Officer.": "वापसी पर स्वागत है, अधिकारी।"
+};
+
+export default translations;

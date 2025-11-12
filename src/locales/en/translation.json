@@ -1,0 +1,8 @@
+const translations = {
+  "Dashboard": "Dashboard",
+  "Draft FIR": "Draft FIR",
+  "Search Sections": "Search Sections",
+  "Welcome back, Officer.": "Welcome back, Officer."
+};
+
+export default translations;
